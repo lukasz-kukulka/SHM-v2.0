@@ -57,3 +57,13 @@ void Player::payCrew(const size_t payCrew) {
 void Player::setPlayerPtr() {
     ship_->changeDelegate(this);
 }
+
+void Player::buy(std::shared_ptr<Cargo> cargo, size_t amount, size_t price) {
+    money_ -= amount * price;
+    ship_->load(cargo);
+ }
+
+void Player::sell(std::shared_ptr<Cargo> cargo, size_t amount, size_t price) {
+    money_ += (amount * price);
+    ship_->unload(cargo);
+}
