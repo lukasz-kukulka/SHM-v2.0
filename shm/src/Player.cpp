@@ -30,6 +30,7 @@ Island* Player::getCurrentPosition() const {
 
 void Player::setCurrentPosition(Island* island) {
     currentPosition_ = island;
+}
 
 Cargo* Player::getCargo(const std::string& name) const {
     return ship_->getCargo(name);
