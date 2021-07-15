@@ -8,8 +8,8 @@
 #include "shm/inc/Time.hpp"
 #include "shm/inc/Map.hpp"
 
-
 class Ship;
+
 class Game {
 public:
     Game(size_t money, size_t gameDays, size_t finalGoal);
@@ -60,7 +60,7 @@ private:
     
     std::unique_ptr<Player> player_;
     std::unique_ptr<Time> time_;
-    std::unique_ptr<Map> map_;
+    std::shared_ptr<Map> map_;
 
     bool isGameWon();
     bool isGameLost();
