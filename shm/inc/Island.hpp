@@ -19,8 +19,8 @@ public:
         size_t getPositionY() { return positionY_; }
 
     private:
-        const size_t positionX_ = 0;
-        const size_t positionY_ = 0;
+        const size_t positionX_ = {};
+        const size_t positionY_ = {};
     };
 
     Island(const Island::Coordinates& position, const size_t &storeSize, Time* time);
