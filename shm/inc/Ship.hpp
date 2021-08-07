@@ -16,8 +16,6 @@ class Delegate;
 class Player;
 class Store;
 
-using CargoStorage = std::vector<std::unique_ptr<Cargo>>;
-
 // class responsible for manage ship(s) in game
 class Ship : public Subscriber {
 public:
@@ -28,6 +26,8 @@ public:
     Ship& operator+=(const size_t amount);
     Ship& operator-=(const size_t amount);
     friend std::ostream& operator<<(std::ostream& out, const Ship& ship);
+
+    using CargoStorage = std::vector<std::unique_ptr<Cargo>>;
 
     int getId() const { return id_; };
     std::string getName() const { return name_; };
