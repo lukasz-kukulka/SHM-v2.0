@@ -4,7 +4,7 @@
 
 #include "Cargo.hpp"
 
-{
+namespace {
     constexpr const size_t MAX_PERCENTAGE = 96;
 }
 
