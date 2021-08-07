@@ -2,7 +2,11 @@
 
 #include "shm/inc/Fruit.hpp"
 
-constexpr size_t DAYS_TO_ROTTEN_DRY_FRUIT { 10 };
+namespace {
+    constexpr const size_t DAYS_TO_ROTTEN_DRY_FRUIT { 10 };
+    constexpr const size_t MULTIPLIER_OF_THE_PRICE_OF_FRUIT { 3 };
+}
+
 
 class DryFruit : public Fruit {
 public:
@@ -22,6 +26,6 @@ public:
 
 private:
     size_t rottenDryFruit_ { DAYS_TO_ROTTEN_DRY_FRUIT };
-    size_t multiplierDryFruit_ { 3 };
+    size_t multiplierDryFruit_ { MULTIPLIER_OF_THE_PRICE_OF_FRUIT };
     
 };
