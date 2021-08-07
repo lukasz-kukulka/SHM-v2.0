@@ -35,10 +35,10 @@ public:
     void sell(Cargo* cargo, size_t amount);
 
 private:
-    std::unique_ptr<Ship> ship_;
+    std::unique_ptr<Ship> ship_{nullptr};
     size_t money_;
     std::pair<bool, size_t> availableSpace_;
     size_t countAvailableSpace() const;
-    Island* currentPosition_;
-    std::shared_ptr<Map> map_;
+    Island* currentPosition_{nullptr};
+    std::shared_ptr<Map> map_{nullptr};
 };
