@@ -3,10 +3,9 @@
 #include <cstddef>
 #include <memory>
 
+#include "shm/inc/Map.hpp"
 #include "shm/inc/Player.hpp"
 #include "shm/inc/Time.hpp"
-#include "shm/inc/Map.hpp"
-
 
 class Game {
 public:
@@ -36,10 +35,9 @@ private:
     void printMenu();
     void printHeader();
     void printMap();
-
     void printWinScreen();
     void printLoseScreen();
-    void announcementGenerate(const std::string & announcenent);
+    void announcementGenerate(const std::string& announcenent);
     void printResponse(const Store::Response& response,
                        const std::string& message);
     void setUserCargo(std::string& cargoName, size_t& cargoAmount);
@@ -48,11 +46,6 @@ private:
     void countingCurrentDay(size_t travelTime);
     size_t getTravelDistance(Island* destinationIsland);
     void generatingTravelInfo();
-    size_t money_;
-    size_t gameDays_;
-    const size_t finalGoal_;
-    size_t currentDay_{};
-  
     void travel();
     void printCargo();
     void printCargoFromStore();
@@ -64,28 +57,29 @@ private:
     void dismissCrew();
     void printCrew();
     MenuOption exitGame();
-    
-    std::unique_ptr<Player> player_;
-    std::shared_ptr<Time> time_;
-    std::shared_ptr<Map> map_;
-
     bool isGameWon();
     bool isGameLost();
-    bool isChoiceValid(const size_t & option);
-    CheckAnswer checkAnswer(const std::string & announcement);
+    bool isChoiceValid(const size_t& option);
+    CheckAnswer checkAnswer(const std::string& announcement);
     MenuOption selectOption();
     MenuOption actionMenu(MenuOption userAnswer);
-  
     bool isCrewNumber(const int crew);
     bool hasPlayerEnoughMoney(const int crew);
     bool isNumberLowerThanZero(const int crew);
-  
-    MenuOption menuOption_ { MenuOption::NoChoice };
-    Island* destinationIsland { nullptr };
-    size_t travelCoordX_ {};
-    size_t travelCoordY_ {};
-    size_t islandMax_ {};
-    size_t islandNo_ {};
+
+    MenuOption menuOption_{MenuOption::NoChoice};
+    size_t money_{};
+    size_t gameDays_{};
+    const size_t finalGoal_{};
+    size_t currentDay_{};
+    Island* destinationIsland{nullptr};
+    size_t travelCoordX_{};
+    size_t travelCoordY_{};
+    size_t islandMax_{};
+    size_t islandNo_{};
     size_t playerSpeed{};
     size_t travelTime{};
+    std::unique_ptr<Player> player_{nullptr};
+    std::shared_ptr<Time> time_{nullptr};
+    std::shared_ptr<Map> map_{nullptr};
 };
