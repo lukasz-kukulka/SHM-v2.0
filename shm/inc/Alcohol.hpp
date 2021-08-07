@@ -4,7 +4,9 @@
 
 #include "Cargo.hpp"
 
-constexpr size_t MAX_PERCENTAGE = 96;
+{
+    constexpr const size_t MAX_PERCENTAGE = 96;
+}
 
 class Alcohol : public Cargo {
 public:
