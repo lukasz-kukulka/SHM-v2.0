@@ -5,13 +5,15 @@
 
 #include "shm/inc/Subscriber.hpp"
 
-constexpr size_t MAX_AMOUNT_OF_CARGO{ 1000 };
+namespace {
+    constexpr size_t MAX_AMOUNT_OF_CARGO{ 1000 };
+}
 
 //class resposible for manage commodity in game
 class Cargo : public Subscriber {
 public:
     Cargo(const std::string& name, size_t amount, size_t basePrice);
-    virtual ~Cargo() = default;
+    virtual ~Cargo();
 
     std::string getName() const { return name_; }
     size_t getAmount() const { return amount_; }
