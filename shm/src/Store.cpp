@@ -88,7 +88,7 @@ Cargo* Store::getCargo(const std::string& name) const {
     return result != cargo_.end() ? result->get() : nullptr;
 }
 
-CargoStorage::iterator Store::findCargoInStore(Cargo* cargo) {
+Store::CargoStorage::iterator Store::findCargoInStore(Cargo* cargo) {
     return std::find_if(begin(cargo_), end(cargo_),
                         [&cargo](const auto& unique) {
                             return unique.get() == cargo;

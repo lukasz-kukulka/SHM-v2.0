@@ -10,7 +10,7 @@
 class Cargo;
 class Player;
 
-using CargoStorage = std::vector<std::unique_ptr<Cargo>>;
+
 
 constexpr size_t MIN_CARGO_IN_STORE{ 0 };
 constexpr size_t MAX_CARGO_IN_STORE{ 100 };
@@ -28,6 +28,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& out, const Store& store);
 
+    using CargoStorage = std::vector<std::unique_ptr<Cargo>>;
     Response buy(Cargo* cargo, size_t amount, Player* player);
     Response sell(Cargo* cargo, size_t amount, Player* player);
     Cargo* getCargo(const std::string& name) const;
