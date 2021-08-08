@@ -64,6 +64,7 @@ private:
         size_t maxPrice_{};
         size_t minUniqueStat_{};
         size_t maxUniqueStat_{};
-    } oneLine_;
+    };
+    SplitLineFromFile oneLine_;
     Time* time_;
 };
