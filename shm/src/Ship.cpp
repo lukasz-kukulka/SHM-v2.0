@@ -27,6 +27,10 @@ Ship::Ship(int id, size_t speed, size_t maxCrew, Time* time, Delegate* delegate)
     : Ship(id, "Ship", speed, maxCrew, 100, time, delegate)
 {}
 
+Ship::~Ship() {
+    time_->removeSubscriber(this);
+}
+
 Ship& Ship::operator+=(const size_t crew) {
     if (crew_ + crew > maxCrew_) {
         //throw std::out_of_range("Too many sailors!\n");

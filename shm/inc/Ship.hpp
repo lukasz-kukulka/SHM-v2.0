@@ -22,6 +22,7 @@ public:
     Ship() = default;
     Ship(int id, const std::string& name, size_t speed, size_t maxCrew, size_t capacity, Time* time, Delegate* delegate = nullptr);
     Ship(int id, size_t speed, size_t maxCrew, Time* time, Delegate* delegate);
+    ~Ship();
 
     Ship& operator+=(const size_t amount);
     Ship& operator-=(const size_t amount);
