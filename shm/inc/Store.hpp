@@ -10,11 +10,11 @@
 class Cargo;
 class Player;
 
-
-
-constexpr size_t MIN_CARGO_IN_STORE{ 0 };
-constexpr size_t MAX_CARGO_IN_STORE{ 100 };
-constexpr size_t STORE_CAPACITY { 1000 };
+namespace {
+    constexpr size_t MIN_CARGO_IN_STORE{ 0 };
+    constexpr size_t MAX_CARGO_IN_STORE{ 100 };
+    constexpr size_t STORE_CAPACITY { 1000 };
+}
 
 class Store : public Subscriber {
 public:
