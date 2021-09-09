@@ -28,7 +28,7 @@ bool Alcohol::operator==(const Cargo& cargo) const {
 }
 
 size_t Alcohol::getPrice() const {
-    return basePrice_ * (percentage_ / MAX_PERCENTAGE);
+    return basePrice_ * (percentage_ / MAX_PERCENTAGE) + 2;
 }
 
 void Alcohol::nextDay() {

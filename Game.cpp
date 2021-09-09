@@ -95,7 +95,7 @@ void Game::printMenu() {
 void Game::printHeader() {
     std::cout << std::setw (99) << std::setfill('#') << "\n";
     std::cout << "#" << std::setfill(' ') << std::setw (97) << "#" << "\n";
-    std::cout << "#" << std::setfill(' ') << std::setw (15) << "YOUR MONEY: " << std::setw (8) << std::setfill('0') << money_;
+    std::cout << "#" << std::setfill(' ') << std::setw (15) << "YOUR MONEY: " << std::setw (8) << std::setfill('0') << player_->getMoney();
     std::cout << std::setfill(' ') << std::setw (30) << "YOUR GOAL: " << std::setw (8) << std::setfill('0') << finalGoal_;
     std::cout << std::setfill(' ') << std::setw (30) << "DAYS LEFT: " << std::setw (3) << std::setfill('0') 
               << gameDays_ - currentDay_ << std::setfill(' ') << std::setw (4) << "#" "\n";
