@@ -282,6 +282,7 @@ void Game::buy() {
     } while (true);
     printResponse(response,
                   "Bought " + std::to_string(cargoAmount) + " of " + cargoName);
+    pressButtonToContinue();
 }
 
 void Game::sell() {
