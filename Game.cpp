@@ -45,17 +45,14 @@ bool Game::isGameWon() {
 
 void Game::printWinScreen() {
     announcementGenerate("CONGRATULATION YOU WIN");
-    pressButtonToContinue();
 }
 
 void Game::printLoseScreen() {
     announcementGenerate("UNFORTUNATELY YOU LOST");
-    pressButtonToContinue();
 }
 
 void Game::printWelcomeScreen() {
     announcementGenerate("WELCOME TO TRADE SHIP SIMULATOR 1.0.0.0 ");
-    pressButtonToContinue();
 }
 
 void Game::announcementGenerate(const std::string & announcenent) {
@@ -68,7 +65,7 @@ void Game::announcementGenerate(const std::string & announcenent) {
           << std::setw (static_cast<int>(frameSize - announcementEndPosition - frameLine)) << "#\n"
           << '#' << std::setw (static_cast<int>(frameSize - frameLine)) << "#\n"
           << std::setfill('#') << std::setw (frameSize) << "\n";
-    std::cin.get();
+    pressButtonToContinue();
 }
 
 bool Game::isGameLost() {
