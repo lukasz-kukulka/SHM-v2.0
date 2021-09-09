@@ -251,7 +251,7 @@ void Game::setUserDestination() {
 void Game::printCargo() {
     std::cout << "================================== SHIP CARGO ===========================================\n";
     printCargoFromShip();
-    std::cout << "\n\n================================== SHIP CARGO ===========================================\n";
+    std::cout << "\n\n================================== SHOP CARGO ===========================================\n";
     printCargoFromStore();
     pressButtonToContinue();
 }
