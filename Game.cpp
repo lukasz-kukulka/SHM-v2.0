@@ -253,6 +253,7 @@ void Game::printCargo() {
     printCargoFromShip();
     std::cout << "\n\n================================== SHIP CARGO ===========================================\n";
     printCargoFromStore();
+    pressButtonToContinue();
 }
 
 void Game::buy() {
