@@ -181,28 +181,28 @@ void Store::convertDataFromFile(std::string lineFromFile) {
 void Store::valueOneLineAssignment(const size_t & wordNumber, const std::string & singleWordFromFile) {
     switch (wordNumber) {
         case 1 : {
-            oneLine_.className_ = singleWordFromFile;
+            className_ = singleWordFromFile;
         } break;
         case 2 : {
-            oneLine_.itemName_ = singleWordFromFile;
+            itemName_ = singleWordFromFile;
         } break;
         case 3 : {
-            oneLine_.minAmount_ = std::stol(singleWordFromFile); 
+            minAmount_ = std::stol(singleWordFromFile); 
         } break;
         case 4 : {
-            oneLine_.maxAmount_ = std::stol(singleWordFromFile);
+            maxAmount_ = std::stol(singleWordFromFile);
         } break;
         case 5 : {
-            oneLine_.minPrice_ = std::stol(singleWordFromFile);
+            minPrice_ = std::stol(singleWordFromFile);
         } break;
         case 6 : {
-            oneLine_.maxPrice_ = std::stol(singleWordFromFile);
+            maxPrice_ = std::stol(singleWordFromFile);
         } break;
         case 7 : {
-            oneLine_.minUniqueStat_ = std::stol(singleWordFromFile);
+            minUniqueStat_ = std::stol(singleWordFromFile);
         } break;
         case 8 : {
-            oneLine_.maxUniqueStat_= std::stol(singleWordFromFile);
+            maxUniqueStat_= std::stol(singleWordFromFile);
         } break;
         default : {
         } break;
@@ -211,11 +211,11 @@ void Store::valueOneLineAssignment(const size_t & wordNumber, const std::string 
 
 void Store::generateSingleCargo() {
     
-    if (oneLine_.className_ == "Fruit"){
+    if (className_ == "Fruit"){
         generateFruit();
-    } else if (oneLine_.className_ == "Alcohol"){
+    } else if (className_ == "Alcohol"){
         generateAlcohol();
-    } else if (oneLine_.className_ == "Item"){
+    } else if (className_ == "Item"){
         generateItem();
     } else {
         generateDryFruits();
@@ -223,26 +223,26 @@ void Store::generateSingleCargo() {
 }
 
 void Store::generateFruit() {
-    cargo_.push_back(std::make_unique<Fruit>(Fruit(oneLine_.itemName_, 
-                        randomGenerate(oneLine_.minAmount_, oneLine_.maxAmount_), 
-                        randomGenerate(oneLine_.minPrice_, oneLine_.maxPrice_))));
+    cargo_.push_back(std::make_unique<Fruit>(Fruit(itemName_, 
+                        randomGenerate(minAmount_, maxAmount_), 
+                        randomGenerate(minPrice_, maxPrice_))));
 }
 
 void Store::generateAlcohol() {
-    cargo_.push_back(std::make_unique<Alcohol>(Alcohol(oneLine_.itemName_, 
-                        randomGenerate(oneLine_.minAmount_, oneLine_.maxAmount_), 
-                        randomGenerate(oneLine_.minPrice_, oneLine_.maxPrice_), oneLine_.minUniqueStat_)));
+    cargo_.push_back(std::make_unique<Alcohol>(Alcohol(itemName_, 
+                        randomGenerate(minAmount_, maxAmount_), 
+                        randomGenerate(minPrice_, maxPrice_), minUniqueStat_)));
 }
 
 void Store::generateItem() {
-    cargo_.push_back(std::make_unique<Item>(Item(oneLine_.itemName_, 
-                        randomGenerate(oneLine_.minAmount_, oneLine_.maxAmount_), 
-                        randomGenerate(oneLine_.minPrice_, oneLine_.maxPrice_), 
-                        rarityConversion(randomGenerate(oneLine_.minUniqueStat_, oneLine_.maxUniqueStat_)))));
+    cargo_.push_back(std::make_unique<Item>(Item(itemName_, 
+                        randomGenerate(minAmount_, maxAmount_), 
+                        randomGenerate(minPrice_, maxPrice_), 
+                        rarityConversion(randomGenerate(minUniqueStat_, maxUniqueStat_)))));
 }
 
 void Store::generateDryFruits() {
-    cargo_.push_back(std::make_unique<DryFruit>(DryFruit(oneLine_.itemName_, 
-                        randomGenerate(oneLine_.minAmount_, oneLine_.maxAmount_), 
-                        randomGenerate(oneLine_.minPrice_, oneLine_.maxPrice_))));
+    cargo_.push_back(std::make_unique<DryFruit>(DryFruit(itemName_, 
+                        randomGenerate(minAmount_, maxAmount_), 
+                        randomGenerate(minPrice_, maxPrice_))));
 }

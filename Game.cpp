@@ -359,7 +359,7 @@ void Game::manageCrew() {
             std::cout << "Wrong value\n"; 
             break;
         }
-    } while (choice != 1 && choice != 2 && choice != 3);7
+    } while (choice != 1 && choice != 2 && choice != 3);
 }
 
 void Game::hireCrew() {

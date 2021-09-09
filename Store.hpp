@@ -53,18 +53,15 @@ private:
     void generateAlcohol();
     void generateItem();
     void generateDryFruits();
+    
     CargoStorage cargo_;
-
-    struct SplitLineFromFile {
-        std::string className_{};
-        std::string itemName_{};
-        size_t minAmount_{};
-        size_t maxAmount_{};
-        size_t minPrice_{};
-        size_t maxPrice_{};
-        size_t minUniqueStat_{};
-        size_t maxUniqueStat_{};
-    };
-    SplitLineFromFile oneLine_;
+    std::string className_{};
+    std::string itemName_{};
+    size_t minAmount_{};
+    size_t maxAmount_{};
+    size_t minPrice_{};
+    size_t maxPrice_{};
+    size_t minUniqueStat_{};
+    size_t maxUniqueStat_{};
     Time* time_;
 };
