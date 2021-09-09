@@ -33,19 +33,19 @@ std::ostream& operator<<(std::ostream& out, const Store& store){
 
 Store::Response Store::buy(Cargo* cargo, size_t amount, Player* player) {
     if (!cargo) {
-        std::cout << "-----------------------  ERROR CARGO-------------------------------" << std::endl;
+        std::cout << "-----------------------  ERROR CARGO -------------------------------" << std::endl;
         return Response::lack_of_cargo;
     }
     if (amount * cargo->getPrice() > player->getMoney()){
-        std::cout << "-----------------------  ERROR money -------------------------------" << std::endl;
+        std::cout << "-----------------------  ERROR MONEY -------------------------------" << std::endl;
         return Response::lack_of_money;
     }
     if (cargo->getAmount() < amount) {
-        std::cout << "-----------------------  ERROR cargo 2 -------------------------------" << std::endl;
+        std::cout << "-----------------------  ERROR AMOUNT -------------------------------" << std::endl;
         return Response::lack_of_cargo;
     }
     if (player->getAvailableSpace() < amount) {
-        std::cout << "-----------------------  ERROR space-------------------------------" << std::endl;
+        std::cout << "-----------------------  ERROR SPACE -------------------------------" << std::endl;
         return Response::lack_of_space;
     }
     player->buy(cargo, amount);
