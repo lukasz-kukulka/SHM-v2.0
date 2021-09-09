@@ -1,4 +1,4 @@
-#include "shm/inc/DryFruit.hpp"
+#include "DryFruit.hpp"
 
 DryFruit::DryFruit(const std::string& name, size_t amount, size_t basePrice)
         : Fruit(name, amount, basePrice) {

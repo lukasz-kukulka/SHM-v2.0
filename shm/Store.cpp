@@ -1,4 +1,4 @@
-#include "shm/inc/Store.hpp"
+#include "Store.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -6,11 +6,11 @@
 #include <iostream>
 #include <random>
 
-#include "shm/inc/Alcohol.hpp"
-#include "shm/inc/Cargo.hpp"
-#include "shm/inc/DryFruit.hpp"
-#include "shm/inc/Fruit.hpp"
-#include "shm/inc/Player.hpp"
+#include "Alcohol.hpp"
+#include "Cargo.hpp"
+#include "DryFruit.hpp"
+#include "Fruit.hpp"
+#include "Player.hpp"
 
 Store::Store(const size_t & storeSize, Time* time) : time_(time)
 {

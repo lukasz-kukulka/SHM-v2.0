@@ -3,9 +3,9 @@
 #include <cstddef>
 #include <memory>
 
-#include "shm/inc/Delegate.hpp"
-#include "shm/inc/Ship.hpp"
-#include "shm/inc/Time.hpp"
+#include "Delegate.hpp"
+#include "Ship.hpp"
+#include "Time.hpp"
 
 class Cargo;
 class Island;
@@ -15,8 +15,7 @@ class Map;
 class Player : public Delegate {
 
 public:
-    Player(std::unique_ptr<Ship> ship,
-           std::shared_ptr<Map> map, size_t money, size_t availableSpace, Time* time);
+    Player(std::shared_ptr<Map> map, size_t money, size_t availableSpace, Time* time);
     ~Player() override {};
 
     Ship* getShip() { return ship_.get(); };
@@ -35,10 +34,11 @@ public:
     void sell(Cargo* cargo, size_t amount);
 
 private:
-    std::unique_ptr<Ship> ship_{nullptr};
+    std::shared_ptr<Map> map_{nullptr};
+    std::shared_ptr<Ship> ship_{nullptr};
     size_t money_;
     std::pair<bool, size_t> availableSpace_;
     size_t countAvailableSpace() const;
     Island* currentPosition_{nullptr};
-    std::shared_ptr<Map> map_{nullptr};
+    
 };

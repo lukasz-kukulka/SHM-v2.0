@@ -4,12 +4,12 @@
 #include <string>
 #include <vector>
 
-#include "shm/inc/Alcohol.hpp"
-#include "shm/inc/DryFruit.hpp"
-#include "shm/inc/Fruit.hpp"
-#include "shm/inc/Item.hpp"
-#include "shm/inc/Subscriber.hpp"
-#include "shm/inc/Time.hpp"
+#include "Alcohol.hpp"
+#include "DryFruit.hpp"
+#include "Fruit.hpp"
+#include "Item.hpp"
+#include "Subscriber.hpp"
+#include "Time.hpp"
 
 class Cargo;
 class Delegate;
@@ -55,9 +55,9 @@ private:
     size_t speed_ { 50 };
     const size_t maxCrew_ { 100 };
     const size_t capacity_ { 80 };
+    Time* time_;
     Delegate* delegate_;
     CargoStorage cargo_;
     size_t crew_ { 50 };
     Store* store_;
-    Time* time_;
 };

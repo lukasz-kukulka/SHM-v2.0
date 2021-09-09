@@ -1,14 +1,15 @@
-#include "shm/inc/Player.hpp"
+#include "Player.hpp"
 
 #include <numeric>
 #include <iostream>
 
-#include "shm/inc/Cargo.hpp"
-#include "shm/inc/Map.hpp"
+#include "Cargo.hpp"
+#include "Map.hpp"
 
-Player::Player(std::unique_ptr<Ship> ship,
-               std::shared_ptr<Map> map, size_t money, size_t availableSpace, Time* time)
-    : ship_(std::move(ship)), map_(map), money_(money)
+Player::Player(std::shared_ptr<Map> map, size_t money, size_t availableSpace, Time* time)
+    : map_(map)
+    , ship_(std::make_shared<Ship>(1, 25, 100, time, this))
+    , money_(money)
 {
     availableSpace_.first = true;
     availableSpace_.second = availableSpace;

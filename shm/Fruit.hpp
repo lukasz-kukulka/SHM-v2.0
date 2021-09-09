@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "shm/inc/Cargo.hpp"
+#include "Cargo.hpp"
 
 constexpr size_t DAYS_TO_ROTTEN{ 10 };
 

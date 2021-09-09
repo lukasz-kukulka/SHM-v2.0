@@ -1,4 +1,4 @@
-#include "shm/inc/Map.hpp"
+#include "Map.hpp"
 
 #include <algorithm>
 #include <cstddef>
@@ -7,7 +7,7 @@
 #include <memory>
 #include <random>
 
-#include "shm/inc/Time.hpp"
+#include "Time.hpp"
 
 Map::Map(Time* time) {
     std::mt19937 generator(std::random_device{}());

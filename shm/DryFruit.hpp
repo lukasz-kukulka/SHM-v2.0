@@ -1,6 +1,6 @@
 #pragma once
 
-#include "shm/inc/Fruit.hpp"
+#include "Fruit.hpp"
 
 namespace {
     constexpr const size_t DAYS_TO_ROTTEN_DRY_FRUIT { 10 };

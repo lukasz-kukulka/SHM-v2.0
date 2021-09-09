@@ -1,37 +1,27 @@
 cmake_minimum_required(VERSION 3.10)
-project(shm)
+project(SHM)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED on)
-set(CMAKE_BUILD_TYPE Debug)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(FILES
+    Alcohol.cpp
+    Cargo.cpp
+    DryFruit.cpp
+    Fruit.cpp
+    Game.cpp
+    Island.cpp
+    Item.cpp
+    Map.cpp
+    Player.cpp
+    Ship.cpp        
+    Store.cpp
+    Time.cpp)
 
-set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/..)
-set(SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
-
-set(SOURCES
-    ${SOURCE_DIR}/Alcohol.cpp
-    ${SOURCE_DIR}/Cargo.cpp
-    ${SOURCE_DIR}/DryFruit.cpp
-    ${SOURCE_DIR}/Fruit.cpp
-    ${SOURCE_DIR}/Game.cpp
-    ${SOURCE_DIR}/Island.cpp
-    ${SOURCE_DIR}/Item.cpp
-    ${SOURCE_DIR}/Map.cpp
-    ${SOURCE_DIR}/Player.cpp
-    ${SOURCE_DIR}/Ship.cpp        
-    ${SOURCE_DIR}/Store.cpp
-    ${SOURCE_DIR}/Time.cpp
-)
-
-add_library(${PROJECT_NAME}-lib STATIC ${SOURCES})
-target_include_directories(${PROJECT_NAME}-lib PUBLIC ${INCLUDE_DIR})
-# target_compile_options(${PROJECT_NAME}-lib PRIVATE -Wall -Wextra -Werror -pedantic -Wconversion)
-
-add_executable(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/main.cpp)
-# target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror -pedantic -Wconversion)
+add_library(${PROJECT_NAME}-lib ${FILES})
+add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
+target_compile_options(${PROJECT_NAME}-lib PRIVATE -Wall -Wextra -Werror -pedantic -Wconversion)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror -pedantic -Wconversion)
+
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+target_compile_features(${PROJECT_NAME}-lib PRIVATE cxx_std_20)

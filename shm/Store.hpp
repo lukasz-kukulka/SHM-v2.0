@@ -3,9 +3,9 @@
 #include <memory>
 #include <vector>
 
-#include "shm/inc/Item.hpp"
-#include "shm/inc/Subscriber.hpp"
-#include "shm/inc/Time.hpp"
+#include "Item.hpp"
+#include "Subscriber.hpp"
+#include "Time.hpp"
 
 class Cargo;
 class Player;

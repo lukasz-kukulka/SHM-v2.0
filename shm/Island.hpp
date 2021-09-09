@@ -3,8 +3,8 @@
 #include <cstddef> 
 #include <memory>
 
-#include "shm/inc/Store.hpp"
-#include "shm/inc/Time.hpp"
+#include "Store.hpp"
+#include "Time.hpp"
 
 // class responsible for manage landmass in game
 class Island {

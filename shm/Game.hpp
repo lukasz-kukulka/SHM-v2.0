@@ -3,9 +3,9 @@
 #include <cstddef>
 #include <memory>
 
-#include "shm/inc/Map.hpp"
-#include "shm/inc/Player.hpp"
-#include "shm/inc/Time.hpp"
+#include "Map.hpp"
+#include "Player.hpp"
+#include "Time.hpp"
 
 class Game {
 public:
@@ -63,8 +63,8 @@ private:
     CheckAnswer checkAnswer(const std::string& announcement);
     MenuOption selectOption();
     MenuOption actionMenu(MenuOption userAnswer);
-    bool isCrewNumber(const int crew);
-    bool hasPlayerEnoughMoney(const int crew);
+    bool isCrewNumber();
+    bool hasPlayerEnoughMoney(const size_t crew);
     bool isNumberLowerThanZero(const int crew);
 
     MenuOption menuOption_{MenuOption::NoChoice};
@@ -79,7 +79,7 @@ private:
     size_t islandNo_{};
     size_t playerSpeed{};
     size_t travelTime{};
-    std::unique_ptr<Player> player_{nullptr};
-    std::shared_ptr<Time> time_{nullptr};
-    std::shared_ptr<Map> map_{nullptr};
+    std::shared_ptr<Time> time_;
+    std::shared_ptr<Map> map_;
+    std::shared_ptr<Player> player_;
 };

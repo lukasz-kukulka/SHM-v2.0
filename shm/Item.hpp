@@ -1,6 +1,6 @@
 #pragma once
 
-#include "shm/inc/Cargo.hpp"
+#include "Cargo.hpp"
 
 class Item : public Cargo {
 public:

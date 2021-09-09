@@ -1,4 +1,4 @@
-#include "shm/inc/Fruit.hpp"
+#include "Fruit.hpp"
 
 #include <stdexcept>
 

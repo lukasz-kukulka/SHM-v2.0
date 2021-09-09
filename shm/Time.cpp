@@ -1,8 +1,8 @@
-#include "shm/inc/Time.hpp"
+#include "Time.hpp"
 
 #include <algorithm>
-
-#include "shm/inc/Subscriber.hpp"
+#include <iostream>
+#include "Subscriber.hpp"
 
 void Time::addSubscriber(Subscriber* subscriber) {
     subscribers_.push_back(subscriber);

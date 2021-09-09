@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <string>
 
-#include "shm/inc/Subscriber.hpp"
+#include "Subscriber.hpp"
 
 namespace {
     constexpr size_t MAX_AMOUNT_OF_CARGO{ 1000 };

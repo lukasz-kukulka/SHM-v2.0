@@ -1,4 +1,4 @@
-#include "shm/inc/Cargo.hpp"
+#include "Cargo.hpp"
 
 #include <stdexcept>
 

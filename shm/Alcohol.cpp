@@ -1,4 +1,4 @@
-#include "shm/inc/Alcohol.hpp"
+#include "Alcohol.hpp"
 
 #include <stdexcept>
 
@@ -28,7 +28,7 @@ bool Alcohol::operator==(const Cargo& cargo) const {
 }
 
 size_t Alcohol::getPrice() const {
-    return basePrice_ * ((double)percentage_ / MAX_PERCENTAGE);
+    return basePrice_ * (percentage_ / MAX_PERCENTAGE);
 }
 
 void Alcohol::nextDay() {

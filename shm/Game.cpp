@@ -1,4 +1,4 @@
-#include "shm/inc/Game.hpp"
+#include "Game.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -7,7 +7,7 @@
 #include <iostream>
 #include <memory>
 
-#include "shm/inc/Island.hpp"
+#include "Island.hpp"
 
 namespace {
     constexpr size_t DISTANCE_MULTIPLIER{ 10 };
@@ -21,8 +21,7 @@ Game::Game(size_t money, size_t gameDays, size_t finalGoal)
     , finalGoal_(finalGoal)  
     , time_(std::make_shared<Time>())
     , map_(std::make_shared<Map>(time_.get()))
-    , player_(std::make_unique<Player>(std::make_unique<Ship>(1, 25, 100, time_.get(), nullptr),
-                                       map_, 100, 10000, time_.get()))
+    , player_(std::make_shared<Player>(map_, money, 100, time_.get()))
 {                                       
     islandMax_  = map_->getIslands().size();
 }
@@ -57,14 +56,14 @@ void Game::printWelcomeScreen() {
 }
 
 void Game::announcementGenerate(const std::string & announcenent) {
-    size_t frameSize { 99 };
-    size_t frameLine { 1 };
-    size_t announcementEndPosition = frameSize / 2 - announcenent.size() / 2 + announcenent.size();
+    auto frameSize { 99 };
+    auto frameLine { 1 };
+    auto announcementEndPosition = frameSize / 2 - announcenent.size() / 2 + announcenent.size();
     std::cout << std::setfill('#') << std::setw (frameSize ) << "\n"
           << '#' << std::setfill(' ') << std::setw (frameSize - frameLine) << "#\n"
-          << '#' << std::setw (announcementEndPosition) << announcenent 
-          << std::setw (frameSize - announcementEndPosition - frameLine) << "#\n"
-          << '#' << std::setw (frameSize - frameLine) << "#\n"
+          << '#' << std::setw (static_cast<int>(announcementEndPosition)) << announcenent 
+          << std::setw (static_cast<int>(frameSize - announcementEndPosition - frameLine)) << "#\n"
+          << '#' << std::setw (static_cast<int>(frameSize - frameLine)) << "#\n"
           << std::setfill('#') << std::setw (frameSize) << "\n";
     std::cin.get();
 }
@@ -130,7 +129,7 @@ Game::MenuOption Game::selectOption() {
 }
 
 Game::MenuOption Game::actionMenu(Game::MenuOption userAnswer) {
-    switch(menuOption_) {
+    switch(userAnswer) {
     case MenuOption::PrintMap :
         printMap(); break;
     case MenuOption::Travel :
@@ -166,7 +165,7 @@ Game::CheckAnswer Game::checkAnswer(const std::string& announcement) {
     std::cout << announcement << '\n';
     std::cin.clear();
     std::cin.ignore(100,'\n');
-    char answer = getchar();
+    auto answer = getchar();
     if (answer == 'Y' || answer == 'y') {
         return CheckAnswer::Yes;
     }
@@ -327,13 +326,13 @@ void Game::printResponse(const Store::Response& response,
 }
 
 void Game::manageCrew() {
-    int choice {};
+    size_t choice {};
     do {
         do {
         printCrew();
         std::cout << "1. Hire crew.\n2. Dismiss Crew.\n3. Back to main menu\n";
         std::cin >> choice;
-    } while (!isCrewNumber(choice));
+    } while (!isCrewNumber());
     switch (choice) {
     case 1 : 
         hireCrew();
@@ -356,7 +355,7 @@ void Game::hireCrew() {
     do {
         std::cout << "How many crew you wanna hire? ";
         std::cin >> crewAmount;
-    } while (!isCrewNumber(crewAmount));
+    } while (!isCrewNumber());
 
     if (isNumberLowerThanZero(crewAmount)) {
         std::cout << "The number must be greater than 0\n";
@@ -374,10 +373,10 @@ void Game::dismissCrew() {
     do {
         std::cout << "How many sailors you want to dismiss? ";
         std::cin >> crewAmount;
-    } while (!isCrewNumber(crewAmount));
+    } while (!isCrewNumber());
     player_->getShip()->operator-=(crewAmount);
 }
-bool Game::isCrewNumber(const int crew) { 
+bool Game::isCrewNumber() { 
     if (std::cin.fail()) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -389,7 +388,7 @@ bool Game::isCrewNumber(const int crew) {
 void Game::printCrew() {
     std::cout << "Crew: " << player_->getShip()->getCrew() << " / " << player_->getShip()->getMaxCrew()<< '\n';
 }
-bool Game::hasPlayerEnoughMoney(const int crew) {
+bool Game::hasPlayerEnoughMoney(const size_t crew) {
     if (crew > player_->getMoney()) {
         return false;
     }

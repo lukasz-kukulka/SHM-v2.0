@@ -1,4 +1,4 @@
-#include "shm/inc/Item.hpp"
+#include "Item.hpp"
 
 #include <iostream>
 #include <stdexcept>
