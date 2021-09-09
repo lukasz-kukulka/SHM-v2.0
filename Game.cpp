@@ -114,7 +114,7 @@ void Game::printMap() {
 }
 
 void Game::pressButtonToContinue() {
-    std::cout << "\nPress the button to continue\n";
+    std::cout << "Press the button to continue\n";
     std::cin.clear();
     std::cin.ignore(100, '\n');
     std::getchar();
