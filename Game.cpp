@@ -45,14 +45,17 @@ bool Game::isGameWon() {
 
 void Game::printWinScreen() {
     announcementGenerate("CONGRATULATION YOU WIN");
+    pressButtonToContinue();
 }
 
 void Game::printLoseScreen() {
     announcementGenerate("UNFORTUNATELY YOU LOST");
+    pressButtonToContinue();
 }
 
 void Game::printWelcomeScreen() {
     announcementGenerate("WELCOME TO TRADE SHIP SIMULATOR 1.0.0.0 ");
+    pressButtonToContinue();
 }
 
 void Game::announcementGenerate(const std::string & announcenent) {
@@ -340,21 +343,21 @@ void Game::manageCrew() {
         printCrew();
         std::cout << "1. Hire crew.\n2. Dismiss Crew.\n3. Back to main menu\n";
         std::cin >> choice;
-    } while (!isCrewNumber());
-    switch (choice) {
-    case 1 : 
-        hireCrew();
-        break;
-    case 2 : 
-        dismissCrew();
-        break;
-    case 3 : 
-        selectOption();
-        break;
-    default : 
-        break;
-    }
-    } while (choice != 1 || choice != 2 || choice != 3);
+        } while (!isCrewNumber());
+        switch (choice) {
+        case 1 : 
+            hireCrew();
+            break;
+        case 2 : 
+            dismissCrew();
+            break;
+        case 3 : 
+            break;
+        default : 
+            std::cout << "Wrong value\n"; 
+            break;
+        }
+    } while (choice != 1 && choice != 2 && choice != 3);7
 }
 
 void Game::hireCrew() {
