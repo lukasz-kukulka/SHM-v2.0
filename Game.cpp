@@ -307,6 +307,7 @@ void Game::sell() {
     } while (true);
     printResponse(response,
                   "Sold " + std::to_string(cargoAmount) + " of " + cargoName);
+    pressButtonToContinue();
 }
 
 void Game::setUserCargo(std::string& cargoName, size_t& cargoAmount) {
