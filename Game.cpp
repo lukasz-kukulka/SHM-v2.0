@@ -110,6 +110,10 @@ void Game::printMap() {
                   << " ---- Coordinates [" << island.getCoordinates().getPositionX() 
                   << "][" << island.getCoordinates().getPositionY() << "]\n";
     }
+    pressButtonToContinue();
+}
+
+void Game::pressButtonToContinue() {
     std::cout << "\nPress the button to continue\n";
     std::cin.clear();
     std::cin.ignore(100, '\n');
@@ -245,7 +249,10 @@ void Game::setUserDestination() {
 }
 
 void Game::printCargo() {
-// TO DO
+    std::cout << "================================== SHIP CARGO ===========================================\n";
+    printCargoFromShip();
+    std::cout << "\n\n================================== SHIP CARGO ===========================================\n";
+    printCargoFromStore();
 }
 
 void Game::buy() {

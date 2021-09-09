@@ -37,6 +37,7 @@ private:
     void printMap();
     void printWinScreen();
     void printLoseScreen();
+    void pressButtonToContinue()
     void announcementGenerate(const std::string& announcenent);
     void printResponse(const Store::Response& response,
                        const std::string& message);
