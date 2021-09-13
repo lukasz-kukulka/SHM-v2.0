@@ -65,7 +65,7 @@ void Game::announcementGenerate(const std::string & announcenent) {
           << std::setw (static_cast<int>(frameSize - announcementEndPosition - frameLine)) << "#\n"
           << '#' << std::setw (static_cast<int>(frameSize - frameLine)) << "#\n"
           << std::setfill('#') << std::setw (frameSize) << "\n";
-    std::cin.get();
+    pressButtonToContinue();
 }
 
 bool Game::isGameLost() {
@@ -95,7 +95,7 @@ void Game::printMenu() {
 void Game::printHeader() {
     std::cout << std::setw (99) << std::setfill('#') << "\n";
     std::cout << "#" << std::setfill(' ') << std::setw (97) << "#" << "\n";
-    std::cout << "#" << std::setfill(' ') << std::setw (15) << "YOUR MONEY: " << std::setw (8) << std::setfill('0') << money_;
+    std::cout << "#" << std::setfill(' ') << std::setw (15) << "YOUR MONEY: " << std::setw (8) << std::setfill('0') << player_->getMoney();
     std::cout << std::setfill(' ') << std::setw (30) << "YOUR GOAL: " << std::setw (8) << std::setfill('0') << finalGoal_;
     std::cout << std::setfill(' ') << std::setw (30) << "DAYS LEFT: " << std::setw (3) << std::setfill('0') 
               << gameDays_ - currentDay_ << std::setfill(' ') << std::setw (4) << "#" "\n";
@@ -110,7 +110,11 @@ void Game::printMap() {
                   << " ---- Coordinates [" << island.getCoordinates().getPositionX() 
                   << "][" << island.getCoordinates().getPositionY() << "]\n";
     }
-    std::cout << "\nPress the button to continue\n";
+    pressButtonToContinue();
+}
+
+void Game::pressButtonToContinue() {
+    std::cout << "Press the button to continue\n";
     std::cin.clear();
     std::cin.ignore(100, '\n');
     std::getchar();
@@ -245,7 +249,11 @@ void Game::setUserDestination() {
 }
 
 void Game::printCargo() {
-// TO DO
+    std::cout << "================================== SHIP CARGO ===========================================\n";
+    printCargoFromShip();
+    std::cout << "\n\n================================== SHOP CARGO ===========================================\n";
+    printCargoFromStore();
+    pressButtonToContinue();
 }
 
 void Game::buy() {
@@ -271,6 +279,7 @@ void Game::buy() {
     } while (true);
     printResponse(response,
                   "Bought " + std::to_string(cargoAmount) + " of " + cargoName);
+    pressButtonToContinue();
 }
 
 void Game::sell() {
@@ -295,6 +304,7 @@ void Game::sell() {
     } while (true);
     printResponse(response,
                   "Sold " + std::to_string(cargoAmount) + " of " + cargoName);
+    pressButtonToContinue();
 }
 
 void Game::setUserCargo(std::string& cargoName, size_t& cargoAmount) {
@@ -332,21 +342,21 @@ void Game::manageCrew() {
         printCrew();
         std::cout << "1. Hire crew.\n2. Dismiss Crew.\n3. Back to main menu\n";
         std::cin >> choice;
-    } while (!isCrewNumber());
-    switch (choice) {
-    case 1 : 
-        hireCrew();
-        break;
-    case 2 : 
-        dismissCrew();
-        break;
-    case 3 : 
-        selectOption();
-        break;
-    default : 
-        break;
-    }
-    } while (choice != 1 || choice != 2 || choice != 3);
+        } while (!isCrewNumber());
+        switch (choice) {
+        case 1 : 
+            hireCrew();
+            break;
+        case 2 : 
+            dismissCrew();
+            break;
+        case 3 : 
+            break;
+        default : 
+            std::cout << "Wrong value\n"; 
+            break;
+        }
+    } while (choice != 1 && choice != 2 && choice != 3);
 }
 
 void Game::hireCrew() {

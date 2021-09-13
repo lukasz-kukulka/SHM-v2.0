@@ -11,8 +11,7 @@ Player::Player(std::shared_ptr<Map> map, size_t money, size_t availableSpace, Ti
     , ship_(std::make_shared<Ship>(1, 25, 100, time, this))
     , money_(money)
 {
-    availableSpace_.first = true;
-    availableSpace_.second = availableSpace;
+    availableSpace_ = availableSpace;
     currentPosition_ = map_->getIsland(map_->getIslands()[0].getCoordinates());
 }
 
@@ -39,16 +38,14 @@ Cargo* Player::getCargo(const std::string& name) const {
     return ship_->getCargo(name);
 }
 
-size_t Player::countAvailableSpace() const {
-    return availableSpace_.first
-           ? availableSpace_.second
-           : ship_->getCapacity() - 
-             std::accumulate(ship_->getCargos()->cbegin(),
-                             ship_->getCargos()->cend(),
-                             static_cast<size_t>(0),
-                             [](size_t sum, const auto& cargo) {
-                                 return sum += cargo->getAmount();
-                             });   
+void Player::countAvailableSpace() {
+    availableSpace_ = ship_->getCapacity() - std::accumulate(ship_->getCargos()->cbegin(),
+                                                             ship_->getCargos()->cend(),
+                                                             static_cast<size_t>(0),
+                                                             [](size_t sum, const auto& cargo) {
+                                                                 return sum += cargo->getAmount();
+                                                             });
+
 }
 
 void Player::payCrew(const size_t payCrew) {
@@ -64,9 +61,11 @@ void Player::setPlayerPtr() {
 void Player::buy(Cargo* cargo, size_t amount) {
     money_ -= amount * cargo->getPrice();
     ship_->load(cargo, amount);
+    countAvailableSpace();
  }
 
 void Player::sell(Cargo* cargo, size_t amount) {
     money_ += amount * cargo->getPrice();
     ship_->unload(cargo, amount);
+    countAvailableSpace();
 }

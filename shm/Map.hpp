@@ -4,9 +4,12 @@
 
 #include <vector>
 
-constexpr size_t COORDINATE_MIN = 0;
-constexpr size_t COORDINATE_MAX = 99;
-constexpr size_t ISLANDS_COUNT = 10;
+namespace {
+    constexpr size_t COORDINATE_MIN = 0;
+    constexpr size_t COORDINATE_MAX = 99;
+    constexpr size_t ISLANDS_COUNT = 10;
+    constexpr char DEFAULT_FILE_NAME[] { "settings/items.txt" };
+}
 
 class Map {
 public:
